@@ -1,0 +1,205 @@
+#include <iostream>
+#include <windows.h>
+#include <cmath>
+using namespace std;
+
+int main() {
+    //problem 11
+    int num;
+    int positive = 0;
+    int negative = 0;
+    int counter = 0;
+    float total = 0;
+    cout << "Enter integers (end with 0): ";
+    while(true) {
+        cin >> num;
+        if(num == 0) {
+            break;
+        }
+        if(num < 0) {
+            negative++;
+        }
+        else if (num > 0) {
+            positive++;
+        }
+        total += num;
+        counter++;
+    }
+    if (counter != 0) {
+        float average = 0;
+        average = total / counter;
+        cout << "The number of positives is " << positive << endl;
+        cout << "The number of negatives is " << negative << endl;
+        cout << "The total is " << total << endl;
+        cout << "The average is " << average << endl;
+    }else{
+        cout << "No Number Entered" << endl;
+    }
+    return 0;
+}
+
+int main() {
+    //problem 12
+    int n;
+    cout << "Enter the size of the square: ";
+    cin >> n;
+
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < n; j++) {
+            cout << "*";
+        }
+        cout << endl;
+    }
+    return 0;
+}
+
+int main() {
+    //problem 13
+    int n;
+    cout << "Enter the number of rows: ";
+    cin >> n;
+
+    for (int i = 1; i <= n; i++) {
+        for (int j = 1; j <= i; j++) {
+            cout << "*";
+        }
+        cout << endl;
+    }
+    return 0;
+}
+
+int main() {
+    //problem 14
+    int n;
+    cout << "Enter the number of rows: ";
+    cin >> n;
+    if (n == 0) {
+        cout << "The depth is 0" << endl;
+    } else {
+        for (int i = 1; i <= n; i++) {
+            for (int j = 1; j <= i; j++) {
+                cout << i;
+            }
+            cout << endl;
+        }
+    }
+    return 0;
+}
+
+int main() {
+    //problem 15
+    int n;
+    double sum = 0.0;
+
+    cout << "Enter the number of terms: ";
+    cin >> n;
+    for (int i = 1; i <= n; i++) {
+        cout << "1/" << i;
+        if (i != n) {
+            cout << " + ";
+        }
+        sum += 1.0 / i;
+    }
+    cout << endl << sum << endl;
+    return 0;
+}
+
+int main() {
+    //problem 16
+    double monthly = 1000.0;
+    double total = 0.0;
+    for (int year = 1; year <= 5; ++year) {
+        double annual = 0.03;
+        double yearly = monthly * 12;
+        cout << "For year number " << year << " rent is " << monthly << endl;
+        cout << "The total for " << year << " is " << yearly << endl;
+        total += yearly;
+        monthly += monthly * annual;
+    }
+    cout << "For all 5 years total rent is " << total << endl;
+    return 0;
+}
+
+int main() {
+    //problem 17
+    int num;
+    int sum = 0;
+    cout << "Enter a positive integer: ";
+    cin >> num;
+    num = abs(num);
+    while (num > 0) {
+        sum += num % 10;
+        num = num / 10;
+    }
+    cout << "The sum of digits is " << sum << endl;
+    return 0;
+}
+
+int main() {
+    //problem 18
+    int binary;
+    int decimal = 0;
+    int base = 1;
+    cout << "Enter binary number: ";
+    cin >> binary;
+    while (binary != 0) {
+        int remainder = binary % 10;
+        decimal += remainder * base;
+        binary /= 10;
+        base *= 2;
+    }
+    cout << "The decimal number is " << decimal << endl;
+    return 0;
+}
+
+int main() {
+    //problem 19
+    int num;
+    cout << "Enter a number: ";
+    cin >> num;
+    for (int i = 2; i <= num; i++) {
+        while (num % i == 0) {
+            cout << i << " ";
+            num = num / i;
+        }
+    }
+    cout << endl;
+    return 0;
+}
+
+int main() {
+    //problem 21
+    int seconds;
+
+    cout << "Enter the number of seconds: ";
+    cin >> seconds;
+
+    for (int i = seconds - 1; i > 0; --i) {
+        cout << i << " seconds remaining" << endl;
+        Sleep(1000);
+    }
+    cout << "Stopped" << endl;
+    return 0;
+}
+
+int main() {
+    //problem 22
+    cout << "Miles   Kilometers" << endl;
+
+    for (int miles = 1; miles <= 10; ++miles)
+        const double miletokilo = 1.609;
+        double kilometers = miles * miletokilo;
+        cout << miles << "       " << kilometers << endl;
+    }
+    return 0;
+}
+
+int main() {
+    //problem 23
+    int n = 0;
+    while (pow(2, n + 1) < 30000) {
+        n++;
+    }
+    cout << "The largest n such that 2^n < 30,000 is: " << n << endl;
+    return 0;
+}
