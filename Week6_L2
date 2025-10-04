@@ -1,0 +1,358 @@
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+//problem 1
+int multiplyUserInput(int a, int b) {
+    return a * b;
+}
+
+int main() {
+    int result;
+    int num1, num2;
+    cout << "Enter first number: ";
+    cin >> num1;
+    cout << "Enter second number: ";
+    cin >> num2;
+    result = multiplyUserInput(num1, num2);
+    cout << "The product is: " << result << endl;
+
+    return 0;
+}
+//problem 2
+double calculateAcceleration(double v1, double v2, double t) {
+    if (t == 0) {
+        cerr << "Time can't be zero" << endl;
+        return 0;
+    }
+    return (v2 - v1) / t;
+}
+
+int main() {
+    double v1, v2, t;
+    cout << "Enter initial velocity: ";
+    cin >> v1;
+    cout << "Enter final velocity: ";
+    cin >> v2;
+    cout << "Enter time: ";
+    cin >> t;
+    double acceleration = calculateAcceleration(v1, v2, t);
+    cout << "The acceleration is: " << acceleration << " m/s^2" << endl;
+
+    return 0;
+}
+//problem 3
+void fun(double radius) {
+    const double Pi = 3.14159;
+    double circumference = 2 * Pi * radius;
+    double area = Pi * radius * radius;
+    cout << "Circumference: " << circumference << endl;
+    cout << "Area: " << area << endl;
+}
+
+int main() {
+    double r;
+    cout << "Enter the radius: ";
+    cin >> r;
+    fun(r);
+    return 0;
+}
+//problem 4
+void fun(double radius) {
+    const double Pi = 3.14159;
+
+    double circumference = 2 * Pi * radius;
+    double area = Pi * radius * radius;
+
+    cout << "Circle:" << endl;
+    cout << "Circumference: " << circumference << endl;
+    cout << "Area: " << area << endl;
+}
+
+void fun(double a, double b) {
+    double perimeter = 2 * (a + b);
+    double area = a * b;
+    cout << "Rectangle:" << endl;
+    cout << "Perimeter: " << perimeter << endl;
+    cout << "Area: " << area << endl;
+}
+
+int main() {
+    double radius;
+    cout << "Enter radius of circle: ";
+    cin >> radius;
+    fun(radius);
+    cout << endl;
+    double length, width;
+    cout << "Enter length and width of rectangle: ";
+    cin >> length >> width;
+    fun(length, width);
+    return 0;
+}
+//problem 5
+void swap(int &a, int &b) {
+    a = a + b;
+    b = a - b;
+    a = a - b;
+}
+
+int main() {
+    int x, y;
+    cout << "Enter 2 number: ";
+    cin >> x >> y;
+    cout << "Before: x = " << x << ", y = " << y << endl;
+    swap(x, y);
+    cout << "After:  x = " << x << ", y = " << y << endl;
+    return 0;
+}
+
+//problem 6
+long long Factorial(long long n = 1) {
+    long long result = 1;
+    for (int i = 1; i <= n; ++i) {
+        result *= i;
+    }
+    return result;
+}
+
+int main() {
+    long long num;
+    cout << "Enter a number: ";
+    if (cin >> num) {
+        cout << "Factorial: " << Factorial(num) << endl;
+    } else {
+        cout << "Factorial: " << Factorial() << endl;
+    }
+
+    return 0;
+}
+
+//problem 7
+int gcd(int num1, int num2) {
+    while (num2 != 0) {
+        int temp = num2;
+        num2 = num1 % num2;
+        num1 = temp;
+    }
+    return num1;
+}
+
+int main() {
+    int a, b;
+    cout << "Enter 2 number: ";
+    cin >> a >> b;
+    cout << "GCD: " << gcd(a, b) << endl;
+    return 0;
+}
+//problem 8
+int findMax(int a, int b, int c) {
+    int maxVal = a;
+    if (b > maxVal) maxVal = b;
+    if (c > maxVal) maxVal = c;
+    return maxVal;
+}
+
+int findMin(int a, int b, int c) {
+    int minVal = a;
+    if (b < minVal) minVal = b;
+    if (c < minVal) minVal = c;
+    return minVal;
+}
+
+int main() {
+    int num1, num2, num3;
+
+    cout << "Enter 3 numbers: ";
+    cin >> num1 >> num2 >> num3;
+
+    cout << "Maximum number: " << findMax(num1, num2, num3) << endl;
+    cout << "Minimum number: " << findMin(num1, num2, num3) << endl;
+
+    return 0;
+}
+//problem 9
+void divison(int a, int b) {
+    if (b == 0) {
+        cout << "Error! Division by zero is not allowed." << endl;
+    } else {
+        double result = (double)a / b;
+        cout << "Result of division: " << result << endl;
+    }
+}
+
+void sum(int a, int b) {
+    int result = a + b;
+    cout << "Result of add: " << result << endl;
+}
+
+void subtract(int a, int b) {
+    int result = a - b;
+    cout << "Result of subtract: " << result << endl;
+}
+
+void product(int a, int b) {
+    int result = a * b;
+}
+
+int main() {
+    int x, y;
+    cout << "Enter two numbers: ";
+    cin >> x >> y;
+    cout << "Enter 1 for add: " << endl;
+    cout << "Enter 2 for sub: " << endl;
+    cout << "Enter 3 for mul: " << endl;
+    cout << "Enter 4 for div: " << endl;
+    int choice;
+    cin >> choice;
+    if (choice = 1) {
+        sum(x, y);
+    }else if (choice = 2) {
+        subtract(x, y);
+    }else if (choice = 3) {
+        product(x, y);
+    }else if (choice = 4) {
+        divison(x, y);
+    }else {
+        cout << "Error!" << endl;
+    }
+
+    return 0;
+}
+
+//problem 10
+int getTriangularNumber(int n) {
+    return n * (n + 1) / 2;
+}
+
+int main() {
+    const int totalNumbers = 75;
+    const int numbersPerLine = 5;
+
+    for (int i = 1; i <= totalNumbers; i++) {
+        cout << getTriangularNumber(i) << "\t";
+        if (i % numbersPerLine == 0) {
+            cout << endl;
+        }
+    }
+
+    return 0;
+}
+//problem 11
+void displayEven(int number) {
+    string numStr = to_string(number);
+    bool foundEven = false;
+    for (char ch : numStr) {
+        if (isdigit(ch)) {
+            int digit = ch - '0';
+            if (digit % 2 == 0) {
+                cout << digit << " ";
+                foundEven = true;
+            }
+        }
+    }
+    if (!foundEven) {
+        cout << "No even digits found.";
+    }
+    cout << endl;
+}
+
+int main() {
+    int num;
+    cout << "Enter a number: ";
+    cin >> num;
+    cout << "Even digits number: ";
+    displayEven(num);
+    return 0;
+}
+//problem 12
+int cubeOfDigits(int number) {
+    int sum = 0;
+    int temp = number;
+    if (temp < 0) {
+        temp = -temp;
+    }
+    while (temp > 0) {
+        int digit = temp % 10;
+        sum += digit * digit * digit;
+        temp /= 10;
+    }
+
+    return sum;
+}
+void isArmstrong(int sum, int number) {
+    if (sum == number) {
+        cout << number << " is Armstrong integer." << endl;
+    } else {
+        cout << number << " is not Armstrong integer." << endl;
+    }
+}
+
+int main() {
+    int num;
+    cout << "Enter an integer: ";
+    cin >> num;
+    int sumOfCubes = cubeOfDigits(num);
+    isArmstrong(sumOfCubes, num);
+    return 0;
+}
+
+//problem 13
+int numberOfDaysInFebruary(int year) {
+    if ((year % 400 == 0) || (year % 4 == 0 && year % 100 != 0)) {
+        return 29;
+    }
+    return 28;
+}
+
+int main() {
+    cout << "Year Days in February" << endl;
+    for (int year = 1985; year >= 1983; year--) {
+        cout << year <<" "<< numberOfDaysInFebruary(year) << endl;
+    }
+
+    return 0;
+}
+
+//problem 14
+double futureInvestmentValue(double investmentAmount, double monthlyInterestRate, int years) {
+    return investmentAmount * pow(1 + monthlyInterestRate, years * 12);
+}
+
+int main() {
+    double investmentAmount, annualInterestRate;
+    int years;
+    cout << "Enter investment amount: ";
+    cin >> investmentAmount;
+    cout << "Enter annual interest rate: ";
+    cin >> annualInterestRate;
+    cout << "Enter number of years: ";
+    cin >> years;
+    double monthlyInterestRate = annualInterestRate / 100 / 12;
+    cout << "\nYear Future Value" << endl;
+    for (int year = 1; year <= 30; ++year) {
+        double futureValue = futureInvestmentValue(investmentAmount, monthlyInterestRate, year);
+        cout << year << " " << fixed << futureValue << endl;
+    }
+
+    return 0;
+}
+
+//problem 15
+void printASCII(char ch1, char ch2, int numberPerLine) {
+    int count = 0;
+    for (char c = ch1; c <= ch2; ++c) {
+        cout << c << ":" << int(c) << "  ";
+        count++;
+        if (count % numberPerLine == 0) {
+            cout << endl;
+        }
+    }
+    if (count % numberPerLine != 0) {
+        cout << endl;
+    }
+}
+
+int main() {
+    printASCII('a', 'm', 6);
+    return 0;
+}
