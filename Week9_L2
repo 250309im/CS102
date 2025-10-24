@@ -1,0 +1,203 @@
+#include <iostream>
+#include <cmath>
+using namespace std;
+/*
+//problem 1
+int power(int x, int y) {
+    if (y == 0)
+        return 1;
+    else
+        return x * power(x, y - 1);
+
+}
+int main() {
+    int a, b;
+    cout << "Enter a number: ";
+    cin >> a;
+    cout << "Enter the power: ";
+    cin >> b;
+    cout << "Result: " << power(a, b) << endl;
+    return 0;
+}
+
+//problem 2
+int reverse(int x, int rev = 0) {
+    if (x==0)
+        return rev;
+
+    return reverse(x/10, rev * 10 + x % 10);
+}
+
+int main() {
+    int num;
+    cout << "Enter a number: ";
+    cin >> num;
+
+    cout << "Reversed number: " << reverse(num) << endl;
+    return 0;
+}
+
+//problem 3
+int reverse(int x, int rev = 0) {
+    if (x==0)
+        return rev;
+    return reverse(x/10, rev * 10 + x % 10);
+}
+int main() {
+    int num;
+    cout << "Enter a number: ";
+    cin >> num;
+    if (reverse(num) == num) {
+        cout << "True" << endl;
+    }
+    else {
+        cout << "False" << endl;
+    }
+    return 0;
+}
+
+//problem 4
+bool prime(int n, int i = 2) {
+    if (n <= 1)
+        return false;
+
+    if (n % i == 0)
+        return false;
+
+    if (i > sqrt(n))
+        return true;
+
+    return prime(n, i + 1);
+}
+
+int main() {
+    int n;
+    cout << "Enter a number: ";
+    cin >> n;
+    if (prime(n)) {
+        cout << "The number is prime number";
+    }
+    else {
+        cout << "The number is not prime number";
+    }
+    return 0;
+}
+
+//problem 5
+int evenDigits(int n) {
+    if (n == 0)
+        return 0;
+    int a = n % 10;
+    if (a % 2 == 0)
+        return 1 + evenDigits(n / 10);
+    else
+        return evenDigits(n / 10);
+}
+
+int main() {
+    int num;
+    cout << "Enter a number: ";
+    cin >> num;
+
+    cout << "Number of even digits: " << evenDigits(num) << endl;
+    return 0;
+}
+
+//problem 6
+int product(int n) {
+    if (n == 0)
+        return 1;
+    return (n % 10) * product(n / 10);
+}
+int main() {
+    int num;
+    cout << "Enter a number: ";
+    cin >> num;
+
+    cout << "Product of digits: " << product(num) << endl;
+    return 0;
+}
+
+//problem 7
+bool powerTwo(int n) {
+    if (n==1)
+        return true;
+    if (n==0 || n % 2 != 0)
+        return false;
+    return powerTwo(n / 2);
+
+}
+int main() {
+    int num;
+    cout << "Enter a number: ";
+    cin >> num;
+    if (powerTwo(num)) {
+        cout << "The number is power of 2";
+    }
+    else {
+        cout << "The number is not power of 2";
+    }
+    return 0;
+}
+//problem 8
+bool increasing(int n) {
+    if (n < 10)
+        return true;
+    int last = n % 10;
+    int secondLast = (n / 10) % 10;
+    if (last <= secondLast)
+        return false;
+    return increasing(n / 10);
+}
+int main() {
+    int num;
+    cout << "Enter a number: ";
+    cin >> num;
+    if (increasing(num)) {
+        cout << "true";
+    }
+    else {
+        cout << "false";
+    }
+    return 0;
+}
+
+//problem 9
+int countZeros(int n) {
+    if (n == 0)
+        return 1;
+    if (n < 10)
+        return 0;
+    int last = n % 10;
+    if (last == 0)
+        return 1 + countZeros(n / 10);
+    else
+        return countZeros(n / 10);
+}
+int main() {
+    int num;
+    cout << "Enter a number: ";
+    cin >> num;
+    cout << "Number of zeros:" << countZeros(num) << endl;
+}
+*/
+//problem 10
+int power(int x, int y) {
+    if (y == 0)
+        return 1;
+    if (y % 2 == 0) {
+        int half = power(x, y / 2);
+        return half * half;
+    } else {
+        return x * power(x, y - 1);
+    }
+}
+int main() {
+    int a, b;
+    cout << "Enter a number: ";
+    cin >> a;
+    cout << "Enter the power: ";
+    cin >> b;
+    cout << "Result: " << power(a, b) << endl;
+    return 0;
+}
