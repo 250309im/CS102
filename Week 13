@@ -1,0 +1,182 @@
+#include <iostream>
+#include <cstdlib>
+#include <ctime>
+using namespace std;
+//problem 9
+int main() {
+    int a = 7, b = 14, c = 21;
+    int *ptrs[3] = {&a, &b, &c};
+    for (int i = 0; i < 3; i++) {
+        cout << *(ptrs[i]) << endl;
+    }
+}
+//problem 10
+int main() {
+    int arr[5]= {9, 3, 7, 1, 6};
+    int *ptr = arr;
+    for (int i = 0; i < 5 - 1; i++) {
+        for (int j = 0; j < 5 - i - 1; j++) {
+            if (*(ptr + j) > *(ptr + j + 1)) {
+                int temp = *(ptr + j);
+                *(ptr + j) = *(ptr + j + 1);
+                *(ptr + j + 1) = temp;
+            }
+        }
+    }
+    for (int i = 0; i < 5; i++) {
+        cout << *(ptr + i) << " ";
+    }
+}
+//problem 11
+int main() {
+    const char* suit[4] = {"Hearts", "Diamonds", "Clubs", "Spades"};
+    for (int i = 0; i < 4; i++) {
+        cout << suit[i];
+    }
+    return 0;
+}
+//problem 12
+int main() {
+    const char* days[3] = {"Mon", "Tue", "Wed"};
+    for (int i = 0; i < 3; i++) {
+        cout << *(*(days + i) + 1);
+    }
+    return 0;
+}
+//problem 13
+int main() {
+    int deck[4][13] = {0};
+    const char* ranks[13] = {"Ace", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten", "Jack", "Queen", "King"};
+    const char* suits[4] = {"Hearts", "Diamonds", "Clubs", "Spades"};
+    deck[0][0] = 1;
+    deck[3][1] = 1;
+    for (int i = 0; i < 4; i++) {
+        for (int j = 0; j < 13; j++) {
+            if (deck[i][j] == 1) {
+                cout << ranks[j] << " of " << suits[i] << endl;
+            }
+        }
+    }
+    return 0;
+}
+//problem 14
+int main() {
+    int deck[4][13] = {0};
+    const char* suits[4] = {"Hearts", "Diamonds", "Clubs", "Spades"};
+    const char* faces[13] = {"Ace", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten", "Jack", "Queen", "King"};
+    int numbers[52];
+    for (int i = 0; i < 52; i++) {
+        numbers[i] = i + 1;
+    }
+    srand(time(0));
+    for (int i = 51; i > 0; i--) {
+        int j = rand() % (i + 1);
+        int temp = numbers[i];
+        numbers[i] = numbers[j];
+        numbers[j] = temp;
+    }
+    int k = 0;
+    for (int i = 0; i < 4; i++) {
+        for (int j = 0; j < 13; j++) {
+            deck[i][j] = numbers[k++];
+        }
+    }
+    for (int i = 0; i < 4; i++) {
+        for (int j = 0; j < 13; j++) {
+            cout << faces[j] << " of " << suits[i] << endl;
+        }
+    }
+    return 0;
+}
+//problem 15
+void greet() {
+    cout << "Hello from greet()" << endl;
+}
+void bye() {
+    cout << "Goodbye from bye()" << endl;
+}
+int main() {
+    void (*fptr)();
+    int choice;
+    cout << "Choose 1: greet, 2: bye: ";
+    cin >> choice;
+    if (choice == 1)
+        fptr = greet;
+    else if (choice == 2)
+        fptr = bye;
+    else {
+        cout << "Invalid choice!" << endl;
+        return 0;
+    }
+    fptr();
+    return 0;
+}
+//problem 16
+int add(int a, int b) {
+    return a + b;
+}
+int multiply(int a, int b) {
+    return a * b;
+}
+int main() {
+    int (*fptr)(int, int);
+    int choice, x, y;
+    cout << "Enter two integers: ";
+    cin >> x >> y;
+    cout << "Choose operation:1. Add 2. Multiply: ";
+    cin >> choice;
+    if (choice == 1)
+        fptr = add;
+    else if (choice == 2)
+        fptr = multiply;
+    else {
+        cout << "Invalid choice!" << endl;
+        return 0;
+    }
+    cout << "Result: " << fptr(x, y) << endl;
+    return 0;
+}
+//problem 17
+int add(int a, int b) {
+    return a + b;
+}
+int multiply(int a, int b) {
+    return a * b;
+}
+void calculate(int (*op)(int, int), int x, int y) {
+    cout << "Result: " << op(x, y) << endl;
+}
+int main() {
+    int x, y, choice;
+    cout << "Enter two integers: ";
+    cin >> x >> y;
+    cout << "Choose operation:1. Add 2. Multiply: ";
+    cin >> choice;
+    if (choice == 1)
+        calculate(add, x, y);
+    else if (choice == 2)
+        calculate(multiply, x, y);
+    else
+        cout << "Invalid choice!" << endl;
+    return 0;
+}
+//problem 18
+int add(int a, int b) {
+    return a + b;
+}
+int multiply(int a, int b) {
+    return a * b;
+}
+int main() {
+    int (*ops[])(int, int) = {add, multiply};
+    int choice, x, y;
+    cout << "Enter two integers: ";
+    cin >> x >> y;
+    cout << "Choose operation:1. Add 2. Multiply: ";
+    cin >> choice;
+    if (choice == 1 || choice == 2)
+        cout << "Result: " << ops[choice - 1](x, y) << endl;
+    else
+        cout << "Invalid choice!" << endl;
+    return 0;
+}
